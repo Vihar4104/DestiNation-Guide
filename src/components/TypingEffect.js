@@ -52,6 +52,7 @@ const TypingEffect = ({ text, onFinishTyping }) => {
       ))}
     </View>
   );
+  
 };
 
 export default TypingEffect;
