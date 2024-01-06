@@ -3,7 +3,9 @@ import { View, Text, TouchableOpacity,ImageBackground, Image,TextInput, ScrollVi
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { MagnifyingGlassIcon } from 'react-native-heroicons/outline';
+import { theme } from '../theme';
 
+import { ChevronLeftIcon, HeartIcon } from 'react-native-heroicons/solid';
 const CategoryDetails = () => {
   const navigation = useNavigation();
   const route = useRoute();
@@ -35,25 +37,36 @@ const CategoryDetails = () => {
 
   return (
     <ImageBackground
-    source={require('../../assets/images/home.jpg')} // Change the path to your image
-    style={{ flex: 1 }}
-  >
+      source={require('../../assets/images/home3.jpg')} // Change the path to your image
+      style={{ flex: 1 }}
+    >
     <View style={styles.container}>
       {/* Header */}
       <View style={styles.header}>
-        <TouchableOpacity onPress={handleBack}>
-          <Text style={styles.headerText}>Back</Text>
+      <TouchableOpacity
+          onPress={() => navigation.goBack()}
+          style={{ padding: wp(1), backgroundColor: theme.bgDark, borderRadius: wp(5) }}
+        >
+          <ChevronLeftIcon size={wp(7)} strokeWidth={4} color="black" />
         </TouchableOpacity>
         <Text style={styles.headerText}>All Categories</Text>
         <View style={styles.headerPlaceholder} />
       </View>
-      <View className="mx-5 mb-4">
-          <View className="flex-row items-center bg-neutral-100 rounded-full p-4 space-x-2 pl-6">
-            <MagnifyingGlassIcon size={20} strokeWidth={3} color="gray" />
+      <View className="mx-5 mb-4 ">
+          <View className="flex-row items-center bg-neutral-100 rounded-full p-4 space-x-2 pl-6 "   style={{
+            borderWidth:1,
+            borderColor:'#dbdbdb',
+          }}>
+            <MagnifyingGlassIcon size={20} strokeWidth={3} color="black" />
             <TextInput
               placeholder='Search destination'
-              placeholderTextColor={'gray'}
-              className="flex-1 text-base mb-1 pl-1 tracking-wider"
+              placeholderTextColor={'black'}
+              className="flex-1 text-base mb-1 pl-1 tracking-wider cursor-pointer "
+              style={{ caretColor: 'transparent', // Hide the default cursor
+              backgroundImage: 'linear-gradient(to right, grey, grey)',
+              backgroundPosition: '0 100%',
+              backgroundRepeat: 'no-repeat',
+              borderBottom: '1px solid grey', }}
             />
           </View>
         </View>
@@ -94,6 +107,7 @@ const styles = StyleSheet.create({
     marginTop:30,
     
   },
+  
   headerText: {
     fontSize: wp(5),
     fontWeight: 'bold',
