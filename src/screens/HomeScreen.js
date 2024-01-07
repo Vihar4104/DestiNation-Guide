@@ -5,8 +5,10 @@ import { MagnifyingGlassIcon } from 'react-native-heroicons/outline'
 import Categories from '../components/categories';
 import SortCategories from '../components/sortCategories';
 import Destinations from '../components/destinations';
+
 const ios = Platform.OS=='ios';
 const topMargin = ios? 'mt-3': 'mt-10';
+
 export default function HomeScreen() {
   return (
     <ImageBackground
