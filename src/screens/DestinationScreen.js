@@ -6,9 +6,6 @@ import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-nat
 import { useNavigation } from '@react-navigation/native';
 import { ChevronLeftIcon, HeartIcon } from 'react-native-heroicons/solid';
 import { theme } from '../theme';
-import { LinearGradient } from 'expo-linear-gradient';
-import { MapPinIcon } from 'react-native-heroicons/solid';
-import LocationSection from '../components/LocationSection.js';
 
 const ios = Platform.OS == 'ios';
 

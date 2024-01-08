@@ -2,7 +2,6 @@ import { View, Text, TouchableOpacity } from 'react-native'
 import React, { useState } from 'react'
 import { sortCategoryData } from '../constants'
 import {widthPercentageToDP as wp, heightPercentageToDP as hp} from 'react-native-responsive-screen';
-import { theme } from '../theme';
 
 
 export default function SortCategories() {
