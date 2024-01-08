@@ -6,14 +6,20 @@ import { LinearGradient } from 'expo-linear-gradient';
 import { useNavigation, useFocusEffect } from '@react-navigation/native';
 import FloatingLogo from '../components/floatingLogo'; // Assuming you have a FloatingLogo component
 import TypingEffect from '../components/TypingEffect'; // Assuming the correct path
-
+import useAuth from '../../hooks/useAuth';
 
 const WelcomeScreen = () => {
   const navigation = useNavigation();
+  const user = useAuth();
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      navigation.navigate('Login');
+      if(user){
+        navigation.navigate('Home');
+      }else{
+        navigation.navigate('Login');
+      }
+      
     }, 3000);
 
     return () => clearTimeout(timeout);
@@ -22,7 +28,12 @@ const WelcomeScreen = () => {
   // Use useFocusEffect to navigate to Home after 3 seconds when the screen comes into focus
   useFocusEffect(() => {
     const timeout = setTimeout(() => {
-      navigation.navigate('Login');
+      if(user){
+        navigation.navigate('Home');
+      }else{
+        navigation.navigate('Login');
+      }
+      
     }, 3000);
 
     return () => clearTimeout(timeout);
