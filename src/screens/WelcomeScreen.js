@@ -22,7 +22,7 @@ const WelcomeScreen = () => {
   // Use useFocusEffect to navigate to Home after 3 seconds when the screen comes into focus
   useFocusEffect(() => {
     const timeout = setTimeout(() => {
-      navigation.navigate('Login');
+      navigation.navigate('Home');
     }, 3000);
 
     return () => clearTimeout(timeout);
