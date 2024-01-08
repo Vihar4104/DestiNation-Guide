@@ -12,7 +12,7 @@ const WelcomeScreen = () => {
 
   useEffect(() => {
     const timeout = setTimeout(() => {
-      navigation.navigate('Home');
+      navigation.navigate('Login');
     }, 3000);
 
     return () => clearTimeout(timeout);
@@ -21,7 +21,7 @@ const WelcomeScreen = () => {
   // Use useFocusEffect to navigate to Home after 3 seconds when the screen comes into focus
   useFocusEffect(() => {
     const timeout = setTimeout(() => {
-      navigation.navigate('Home');
+      navigation.navigate('Login');
     }, 3000);
 
     return () => clearTimeout(timeout);
@@ -29,7 +29,7 @@ const WelcomeScreen = () => {
 
   const onFinishTyping = () => {
     // Logic to handle typing effect completion
-  
+
   };
 
   return (
@@ -51,12 +51,12 @@ const WelcomeScreen = () => {
         />
         <View className="space-y-3">
           <Text className="mb-96 ml-20">
-            <FloatingLogo  />
+            <FloatingLogo />
           </Text>
           <TypingEffect className="w-4"
-           
+
             text="DestiNation Guide"
-         
+
             onFinishTyping={onFinishTyping}
             style={{ fontSize: 24 }}
           />

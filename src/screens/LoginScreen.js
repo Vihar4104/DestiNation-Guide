@@ -7,7 +7,6 @@ import { useNavigation } from '@react-navigation/native'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import {auth} from '../../config/firebase'
 import { useState } from 'react'
-import HomeScreen from './HomeScreen'
 
 export default function LoginScreen() {
     const navigation = useNavigation();
