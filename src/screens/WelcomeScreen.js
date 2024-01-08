@@ -53,7 +53,11 @@ const WelcomeScreen = () => {
             <Text className="items-center justify-center mt-[200px] ml-[35px]">
               <FloatingLogo />
             </Text>
-            
+            <TypingEffect className="w-4 mb-[250px]"
+            text="DestiNation Guide"
+            onFinishTyping={onFinishTyping}
+            style={{ fontSize: 24 }}
+          />
             <Text className="text-black font-medium mb-[250px] text-[15px]" style={{ fontSize: wp(5) }}>
               Unlocking Destinations, One Click Away: destiNation Guide
             </Text>
