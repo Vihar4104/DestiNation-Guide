@@ -107,7 +107,7 @@ const FloatingLogo = ({ navigation }) => {
           }}
         >
           <Image
-            source={require('../../assets/images/ho.png')}
+            source={require('../../assets/images/logo.png')}
             style={{ width: wp(50), height: wp(50) }}
           />
         </Animated.View>
