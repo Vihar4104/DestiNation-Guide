@@ -108,7 +108,7 @@ const FloatingLogo = ({ navigation }) => {
         >
           <Image
             source={require('../../assets/images/logo.png')}
-            style={{ width: wp(50), height: wp(50) }}
+            style={{ width: wp(70), height: wp(70), marginTop: 240 }}
           />
         </Animated.View>
       </TouchableOpacity>

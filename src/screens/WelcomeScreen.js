@@ -22,7 +22,7 @@ const WelcomeScreen = () => {
   // Use useFocusEffect to navigate to Home after 3 seconds when the screen comes into focus
   useFocusEffect(() => {
     const timeout = setTimeout(() => {
-      navigation.navigate('Home');
+      navigation.navigate('Login');
     }, 3000);
 
     return () => clearTimeout(timeout);
@@ -50,16 +50,11 @@ const WelcomeScreen = () => {
             className="absolute bottom-0"
           />
           <View className="space-y-3">
-            <Text className="mb-96 ml-20">
-              <FloatingLogo className="" />
+            <Text className="items-center justify-center mt-[200px] ml-[35px]">
+              <FloatingLogo />
             </Text>
-            <TypingEffect className="w-4"
-              text="DestiNation Guide"
-
-              onFinishTyping={onFinishTyping}
-              style={{ fontSize: 25 }}
-            />
-            <Text className="text-black bottom-16 font-medium mb-28" style={{ fontSize: wp(5) }}>
+            
+            <Text className="text-black font-medium mb-[250px] text-[15px]" style={{ fontSize: wp(5) }}>
               Unlocking Destinations, One Click Away: destiNation Guide
             </Text>
           </View>
