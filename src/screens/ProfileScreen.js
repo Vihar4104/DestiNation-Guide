@@ -1,16 +1,16 @@
-import React from 'react';
+import React from 'react'
 import { View, Text, Image, TouchableOpacity } from 'react-native';
 import { signOut } from 'firebase/auth'
-import { useNavigation, useRoute } from '@react-navigation/native'
+import { useNavigation } from '@react-navigation/native'
 import { auth } from '../../config/firebase';
+
 
 const ProfileScreen = () => {
     const navigation = useNavigation();
-    const route = useRoute();
-    
+
     const handleLogout = async () => {
         try {
-            await signOut(auth);
+            await signOut(auth).then(() => console.log("Successfully logged out!"));
             navigation.navigate("Login");
         } catch (error) {
             console.error('Error logging out:', error);
@@ -25,9 +25,10 @@ const ProfileScreen = () => {
                 source={require('../../assets/images/avatar.png')} // Replace with the source of your profile picture
             />
 
-            <Text>User's Id: 001</Text>
-            <Text>User's Name: Kathan Patel</Text>
-            <Text>User's Email: kathanpatel403@gmail.com</Text>
+            <View>
+                <Text>User's Name:  </Text>
+                <Text>User's Email:</Text>
+            </View>
 
 
             <TouchableOpacity
