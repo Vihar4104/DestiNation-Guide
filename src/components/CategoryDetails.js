@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity,ImageBackground, Image,TextInput, ScrollView, StyleSheet, Animated, Easing } from 'react-native';
+import { View, Text, TouchableOpacity, ImageBackground, Image, TextInput, ScrollView, StyleSheet, Animated, Easing } from 'react-native';
 import { useNavigation, useRoute } from '@react-navigation/native';
 import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
 import { MagnifyingGlassIcon } from 'react-native-heroicons/outline';
@@ -35,19 +35,19 @@ const CategoryDetails = () => {
 
   return (
     <ImageBackground
-    source={require('../../assets/images/home.jpg')} // Change the path to your image
-    style={{ flex: 1 }}
-  >
-    <View style={styles.container}>
-      {/* Header */}
-      <View style={styles.header}>
-        <TouchableOpacity onPress={handleBack}>
-          <Text style={styles.headerText}>Back</Text>
-        </TouchableOpacity>
-        <Text style={styles.headerText}>All Categories</Text>
-        <View style={styles.headerPlaceholder} />
-      </View>
-      <View className="mx-5 mb-4">
+      source={require('../../assets/images/home.jpg')} // Change the path to your image
+      style={{ flex: 1 }}
+    >
+      <View style={styles.container}>
+        {/* Header */}
+        <View style={styles.header}>
+          <TouchableOpacity onPress={handleBack}>
+            <Text style={styles.headerText}>Back</Text>
+          </TouchableOpacity>
+          <Text style={styles.headerText}>All Categories</Text>
+          <View style={styles.headerPlaceholder} />
+        </View>
+        <View className="mx-5 mb-4">
           <View className="flex-row items-center bg-neutral-100 rounded-full p-4 space-x-2 pl-6">
             <MagnifyingGlassIcon size={20} strokeWidth={3} color="gray" />
             <TextInput
@@ -57,26 +57,26 @@ const CategoryDetails = () => {
             />
           </View>
         </View>
-      {/* Categories */}
-      <ScrollView contentContainerStyle={styles.categoryContainer}>
-        {categories.map((cat, index) => (
-          <Animated.View key={index} style={[styles.categoryCard, { opacity: fadeIn }]}>
-            <TouchableOpacity
-              style={{ flex: 1 }}
-              onPress={() => {
-                handleCategoryPress(cat.id);
-                fadeInAnimation();
-              }}
-            >
-              <Image source={cat.image} style={styles.categoryImage} />
-              <View style={styles.cardContent}>
-                <Text style={styles.categoryTitle}>{cat.title}</Text>
-              </View>
-            </TouchableOpacity>
-          </Animated.View>
-        ))}
-      </ScrollView>
-    </View>
+        {/* Categories */}
+        <ScrollView contentContainerStyle={styles.categoryContainer}>
+          {categories.map((cat, index) => (
+            <Animated.View key={index} style={[styles.categoryCard, { opacity: fadeIn }]}>
+              <TouchableOpacity
+                style={{ flex: 1 }}
+                onPress={() => {
+                  handleCategoryPress(cat.id);
+                  fadeInAnimation();
+                }}
+              >
+                <Image source={cat.image} style={styles.categoryImage} />
+                <View style={styles.cardContent}>
+                  <Text style={styles.categoryTitle}>{cat.title}</Text>
+                </View>
+              </TouchableOpacity>
+            </Animated.View>
+          ))}
+        </ScrollView>
+      </View>
     </ImageBackground>
   );
 };
@@ -84,15 +84,15 @@ const CategoryDetails = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    
+
   },
   header: {
     flexDirection: 'row',
     justifyContent: 'space-between',
     alignItems: 'center',
     padding: 16,
-    marginTop:30,
-    
+    marginTop: 30,
+
   },
   headerText: {
     fontSize: wp(5),
@@ -134,7 +134,7 @@ const styles = StyleSheet.create({
   },
   categoryTitle: {
     fontSize: wp(4),
-    textAlign:'center',
+    textAlign: 'center',
     color: '#333333',
     fontWeight: 'bold',
   },

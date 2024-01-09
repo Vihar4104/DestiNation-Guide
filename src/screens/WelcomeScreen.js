@@ -11,15 +11,15 @@ import useAuth from '../../hooks/useAuth';
 const WelcomeScreen = () => {
   const navigation = useNavigation();
   const user = useAuth();
-
+  
   useEffect(() => {
     const timeout = setTimeout(() => {
-      if(user){
+      if (user) {
         navigation.navigate('Home');
-      }else{
+      } else {
         navigation.navigate('Login');
       }
-      
+
     }, 3000);
 
     return () => clearTimeout(timeout);
@@ -28,12 +28,12 @@ const WelcomeScreen = () => {
   // Use useFocusEffect to navigate to Home after 3 seconds when the screen comes into focus
   useFocusEffect(() => {
     const timeout = setTimeout(() => {
-      if(user){
+      if (user) {
         navigation.navigate('Home');
-      }else{
+      } else {
         navigation.navigate('Login');
       }
-      
+
     }, 3000);
 
     return () => clearTimeout(timeout);
@@ -65,10 +65,10 @@ const WelcomeScreen = () => {
               <FloatingLogo />
             </Text>
             <TypingEffect className="w-4 mb-[250px]"
-            text="DestiNation Guide"
-            onFinishTyping={onFinishTyping}
-            style={{ fontSize: 24 }}
-          />
+              text="DestiNation Guide"
+              onFinishTyping={onFinishTyping}
+              style={{ fontSize: 24 }}
+            />
             <Text className="text-black font-medium mb-[250px] text-[15px]" style={{ fontSize: wp(5) }}>
               Unlocking Destinations, One Click Away: destiNation Guide
             </Text>

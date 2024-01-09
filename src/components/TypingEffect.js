@@ -46,7 +46,7 @@ const TypingEffect = ({ text, onFinishTyping }) => {
   return (
     <View style={{ flexDirection: 'row' }}>
       {displayText.map((item, index) => (
-        <Text key={index} style={{ color: item.color,fontSize:35,marginTop: -200, marginStart: 2}}>
+        <Text key={index} style={{ color: item.color, fontSize: 35, marginTop: -200, marginStart: 2 }}>
           {item.letter}
         </Text>
       ))}

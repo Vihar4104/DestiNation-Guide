@@ -4,7 +4,7 @@ import { SafeAreaView } from 'react-native-safe-area-context'
 import { useNavigation } from '@react-navigation/native'
 import { signInWithEmailAndPassword } from 'firebase/auth'
 import { auth } from '../../config/firebase'
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 
 export default function LoginScreen() {
     const navigation = useNavigation();
@@ -21,6 +21,7 @@ export default function LoginScreen() {
             }
         }
     }
+
     return (
         <ImageBackground
             source={require('../../assets/images/home3.jpg')} // Change the path to your image
