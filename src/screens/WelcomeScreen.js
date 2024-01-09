@@ -13,7 +13,7 @@ const WelcomeScreen = () => {
   useEffect(() => {
     const timeout = setTimeout(() => {
       navigation.navigate('Home');
-    }, 3000);
+    }, 1500);
 
     return () => clearTimeout(timeout);
   }, [navigation]);
@@ -22,7 +22,7 @@ const WelcomeScreen = () => {
   useFocusEffect(() => {
     const timeout = setTimeout(() => {
       navigation.navigate('Home');
-    }, 3000);
+    }, 1500);
 
     return () => clearTimeout(timeout);
   });
@@ -36,21 +36,15 @@ const WelcomeScreen = () => {
     <View className="flex-1 flex justify-end">
       {/* background image */}
       <Image
-        source={require('../../assets/images/welcome.png')}
+        source={require('../../assets/images/home3.jpg')}
         className="h-full w-full absolute p-3"
       />
 
       {/* content & gradient */}
       <View className="p-5 pb-10 space-y-8">
-        <LinearGradient
-          colors={['transparent', 'rgba(156, 230, 255,0.6)']}
-          style={{ width: wp(100), height: hp(50) }}
-          start={{ x: 0.5, y: 0 }}
-          end={{ x: 0.5, y: 1 }}
-          className="absolute bottom-0"
-        />
+        
         <View className="space-y-3">
-          <Text className="mb-96 ml-20">
+          <Text className="ml-20">
             <FloatingLogo  />
           </Text>
           <TypingEffect className="w-4"
@@ -60,10 +54,13 @@ const WelcomeScreen = () => {
             onFinishTyping={onFinishTyping}
             style={{ fontSize: 24 }}
           />
-          <Text className="text-black bottom-16 font-medium mb-28" style={{ fontSize: wp(5) }}>
-            Secrets of Gujarat - Your Preferences, Your Journey!
-          </Text>
+        
+          
         </View>
+        <View className='pl-2 -top-6 mb-32'><Text className="text-black  font-medium " style={{ fontSize: wp(5) }}>
+          Unlocking Destinations, One Click Away
+          </Text></View>
+      
       </View>
     </View>
   );

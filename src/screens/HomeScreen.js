@@ -14,13 +14,13 @@ export default function HomeScreen() {
       style={{ flex: 1 }}
     >
     <SafeAreaView className="flex-1 ">
-    <StatusBar translucent backgroundColor="transparent" barStyle="light-content" />
+    <StatusBar translucent backgroundColor="transparent" barStyle="dark-content" />
         {/* avatar */}
         <View className="mx-5 flex-row justify-between items-center  -mb-4">
           {/* <Text style={{fontSize: wp(7)}} className="font-bold text-neutral-700">DestiNation Guide</Text> */}
-          <Image source={require('../../assets/images/logo.png')} style={{height: wp(50), width: wp(30)}} />
+          <Image source={require('../../assets/images/logo.png')} style={{height: wp(50), width: wp(30),marginLeft:-25,marginBottom:-10}} />
           <TouchableOpacity>
-            <Image source={require('../../assets/images/avatar.png')} style={{height: wp(18), width: wp(18)}} />
+            <Image source={require('../../assets/images/avatar.png')} style={{height: wp(18), width: wp(15)}} />
           </TouchableOpacity>
         </View>
         <View className="mx-5 mb-4 ">

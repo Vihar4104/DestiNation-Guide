@@ -19,7 +19,7 @@ const TypingEffect = ({ text, onFinishTyping }) => {
         clearInterval(typingInterval);
         onFinishTyping();
       }
-    }, 170); // Adjust the typing speed as needed
+    }, 61); // Adjust the typing speed as needed
 
     return () => clearInterval(typingInterval);
   }, [text, onFinishTyping]);
@@ -46,7 +46,7 @@ const TypingEffect = ({ text, onFinishTyping }) => {
   return (
     <View style={{ flexDirection: 'row' }}>
       {displayText.map((item, index) => (
-        <Text key={index} style={{ color: item.color,fontSize:45,marginTop:-450 }}>
+        <Text key={index} style={{ color: item.color,fontSize:45,marginTop:-60 }}>
           {item.letter}
         </Text>
       ))}
