@@ -1,6 +1,6 @@
-import React, { useEffect, useRef } from 'react';
-import { Animated, Easing, Image, View, TouchableOpacity } from 'react-native'; // Import TouchableOpacity
-import { widthPercentageToDP as wp } from 'react-native-responsive-screen';
+import React, { useEffect, useRef } from "react";
+import { Animated, Easing, Image, View, TouchableOpacity } from "react-native"; // Import TouchableOpacity
+import { widthPercentageToDP as wp } from "react-native-responsive-screen";
 const FloatingLogo = ({ navigation }) => {
   const animatedValue = useRef(new Animated.Value(0)).current;
 
@@ -39,7 +39,7 @@ const FloatingLogo = ({ navigation }) => {
 
   const rotateY = animatedValue.interpolate({
     inputRange: [0, 1],
-    outputRange: ['0deg', '360deg'],
+    outputRange: ["0deg", "360deg"],
   });
 
   const scale = animatedValue.interpolate({
@@ -53,7 +53,7 @@ const FloatingLogo = ({ navigation }) => {
   });
 
   const goToNextPage = () => {
-    navigation.navigate('NextPage');
+    navigation.navigate("NextPage");
   };
 
   const increaseSizeAndFade = Animated.sequence([
@@ -90,9 +90,9 @@ const FloatingLogo = ({ navigation }) => {
     <View
       style={{
         flex: 1,
-        justifyContent: 'center',
-        alignItems: 'center',
-        backgroundColor: 'rgba(255, 255, 255, 0)', // Transparent background
+        justifyContent: "center",
+        alignItems: "center",
+        backgroundColor: "rgba(255, 255, 255, 0)", // Transparent background
       }}
     >
       <TouchableOpacity onPress={onPress}>
@@ -107,8 +107,8 @@ const FloatingLogo = ({ navigation }) => {
           }}
         >
           <Image
-            source={require('../../assets/images/logo.png')}
-            style={{ width: wp(70), height: wp(70), marginTop: 240 }}
+            source={require("../../assets/images/ho.png")}
+            style={{ width: wp(50), height: wp(50) }}
           />
         </Animated.View>
       </TouchableOpacity>

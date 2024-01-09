@@ -1,9 +1,25 @@
-import React, { useState, useEffect } from 'react';
-import { View, Text, TouchableOpacity, ImageBackground, Image, TextInput, ScrollView, StyleSheet, Animated, Easing } from 'react-native';
-import { useNavigation, useRoute } from '@react-navigation/native';
-import { widthPercentageToDP as wp, heightPercentageToDP as hp } from 'react-native-responsive-screen';
-import { MagnifyingGlassIcon } from 'react-native-heroicons/outline';
+import React, { useState, useEffect } from "react";
+import {
+  View,
+  Text,
+  TouchableOpacity,
+  ImageBackground,
+  Image,
+  TextInput,
+  ScrollView,
+  StyleSheet,
+  Animated,
+  Easing,
+} from "react-native";
+import { useNavigation, useRoute } from "@react-navigation/native";
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp,
+} from "react-native-responsive-screen";
+import { MagnifyingGlassIcon } from "react-native-heroicons/outline";
+import { theme } from "../theme";
 
+import { ChevronLeftIcon, HeartIcon } from "react-native-heroicons/solid";
 const CategoryDetails = () => {
   const navigation = useNavigation();
   const route = useRoute();
@@ -35,32 +51,48 @@ const CategoryDetails = () => {
 
   return (
     <ImageBackground
-      source={require('../../assets/images/home.jpg')} // Change the path to your image
+      source={require("../../assets/images/home3.jpg")} // Change the path to your image
       style={{ flex: 1 }}
     >
       <View style={styles.container}>
         {/* Header */}
         <View style={styles.header}>
-          <TouchableOpacity onPress={handleBack}>
-            <Text style={styles.headerText}>Back</Text>
+          <TouchableOpacity
+            onPress={() => navigation.goBack()}
+            style={{
+              padding: wp(1),
+              backgroundColor: theme.bgDark,
+              borderRadius: wp(5),
+            }}
+          >
+            <ChevronLeftIcon size={wp(7)} strokeWidth={4} color="black" />
           </TouchableOpacity>
           <Text style={styles.headerText}>All Categories</Text>
           <View style={styles.headerPlaceholder} />
         </View>
-        <View className="mx-5 mb-4">
-          <View className="flex-row items-center bg-neutral-100 rounded-full p-4 space-x-2 pl-6">
-            <MagnifyingGlassIcon size={20} strokeWidth={3} color="gray" />
+        <View className="mx-5 mb-4 ">
+          <View
+            className="flex-row items-center bg-neutral-100 rounded-full p-4 space-x-2 pl-6 "
+            style={{
+              borderWidth: 1,
+              borderColor: "#dbdbdb",
+            }}
+          >
+            <MagnifyingGlassIcon size={20} strokeWidth={3} color="black" />
             <TextInput
-              placeholder='Search destination'
-              placeholderTextColor={'gray'}
-              className="flex-1 text-base mb-1 pl-1 tracking-wider"
+              placeholder="Search destination"
+              placeholderTextColor={"black"}
+              className="flex-1 text-base mb-1 pl-1 tracking-wider "
             />
           </View>
         </View>
         {/* Categories */}
         <ScrollView contentContainerStyle={styles.categoryContainer}>
           {categories.map((cat, index) => (
-            <Animated.View key={index} style={[styles.categoryCard, { opacity: fadeIn }]}>
+            <Animated.View
+              key={index}
+              style={[styles.categoryCard, { opacity: fadeIn }]}
+            >
               <TouchableOpacity
                 style={{ flex: 1 }}
                 onPress={() => {
@@ -84,59 +116,58 @@ const CategoryDetails = () => {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-
   },
   header: {
-    flexDirection: 'row',
-    justifyContent: 'space-between',
-    alignItems: 'center',
+    flexDirection: "row",
+    justifyContent: "space-between",
+    alignItems: "center",
     padding: 16,
     marginTop: 30,
-
   },
+
   headerText: {
     fontSize: wp(5),
-    fontWeight: 'bold',
-    color: '#000',
+    fontWeight: "bold",
+    color: "#000",
   },
   headerPlaceholder: {
     width: wp(4),
   },
   categoryContainer: {
     padding: 16,
-    flexDirection: 'row',
-    flexWrap: 'wrap',
-    justifyContent: 'space-between',
+    flexDirection: "row",
+    flexWrap: "wrap",
+    justifyContent: "space-between",
   },
   categoryCard: {
-    width: '48%',
+    width: "48%",
     marginBottom: 16,
     borderRadius: 20,
-    overflow: 'hidden',
+    overflow: "hidden",
     borderWidth: 1,
-    borderColor: '#E1E1E1',
-    backgroundColor: '#FFFFFF',
+    borderColor: "#E1E1E1",
+    backgroundColor: "#FFFFFF",
     elevation: 3,
   },
   categoryImage: {
-    width: '100%',
+    width: "100%",
     height: hp(25),
     borderTopLeftRadius: 20,
     borderTopRightRadius: 20,
-    resizeMode: 'cover',
+    resizeMode: "cover",
     marginBottom: hp(1),
   },
   cardContent: {
     padding: 16,
-    backgroundColor: 'rgba(255, 255, 255, 0.9)',
+    backgroundColor: "rgba(255, 255, 255, 0.9)",
     borderBottomLeftRadius: 20,
     borderBottomRightRadius: 20,
   },
   categoryTitle: {
     fontSize: wp(4),
-    textAlign: 'center',
-    color: '#333333',
-    fontWeight: 'bold',
+    textAlign: "center",
+    color: "#333333",
+    fontWeight: "bold",
   },
 });
 

@@ -1,4 +1,4 @@
 export const theme = {
-    bg: opacity => `rgba(249, 115, 22, ${opacity})`,
-    text: 'black'
-}
+  bg: (opacity) => `rgba(249, 115, 22, ${opacity})`,
+  text: "black",
+};
