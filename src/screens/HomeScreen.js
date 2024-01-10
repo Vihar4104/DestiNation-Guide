@@ -93,7 +93,7 @@ export default function HomeScreen() {
           </View>
 
           {/* sort categories */}
-          <View className="mb-4">
+          <View className="mb-4 ">
             <SortCategories />
           </View>
 

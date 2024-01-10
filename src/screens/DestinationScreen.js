@@ -534,23 +534,10 @@ export default function DestinationScreen(props) {
               style={{ marginTop: hp(0.1) }}
             >
               <TouchableOpacity
-                style={{
-                  backgroundColor: theme.bg(0.8),
-                  height: wp(15),
-                  width: "50%",
-                  alignSelf: "center",
-                  justifyContent: "center",
-                  alignItems: "center",
-                  borderRadius: wp(10),
-                  marginBottom: 30,
-                }}
+              className="py-3 mb-[100px] bg-gray-400 rounded-xl"
               >
                 <Text
-                  style={{
-                    fontSize: wp(5.5),
-                    fontWeight: "bold",
-                    color: "white",
-                  }}
+                  className='text-xl font-bold text-center text-black'
                 >
                   Direction
                 </Text>
