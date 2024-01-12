@@ -37,14 +37,21 @@ export default function DestinationScreen(props) {
   const [isFavourite, toggleFavourite] = useState(false);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-  const images = [
-    require("../../assets/images/kakariya1.jpg"),
-    require("../../assets/images/kakariya2.jpg"),
-    require("../../assets/images/kakariya3.jpg"),
-  ]; // Add your image sources here
+  const data = [
+    { name: "Kakariya Lack", key: "1" },
+    { name: "kakariya2", key: "2" },
+    { name: "kakariya3", key: "3" },
+    { name: "kakariya3", key: "4" },
+    { name: "kakariya3", key: "5" },
+    // Add more items as needed
+  ];
+  
+ 
+
+  
   const fadeAnim = new Animated.Value(0);
   const flatListRef = useRef();
-
+  
   useEffect(() => {
     Animated.timing(fadeAnim, {
       toValue: 1,
@@ -53,21 +60,21 @@ export default function DestinationScreen(props) {
       useNativeDriver: true,
     }).start();
   }, [fadeAnim]);
-
+  
   const handleScroll = (event) => {
     const offsetX = event.nativeEvent.contentOffset.x;
     const newIndex = Math.round(offsetX / wp(100));
     setCurrentIndex(newIndex);
   };
-
+  
   useEffect(() => {
     const interval = setInterval(() => {
-      const nextIndex = (currentIndex + 1) % images.length;
+      const nextIndex = (currentIndex + 1) % data.length;
       flatListRef.current.scrollToIndex({ animated: true, index: nextIndex });
     }, 1500);
-
+  
     return () => clearInterval(interval);
-  }, [currentIndex, images]);
+  }, [currentIndex, data]);
 
   return (
     <ImageBackground
@@ -76,49 +83,44 @@ export default function DestinationScreen(props) {
     >
       <View style={{ flex: 1 }}>
         <View style={{ flex: 1 }}>
-          <FlatList
-            style={{
-              width: wp(88),
-              margin: 20,
-              
-              borderRadius:40,
-              
-            }}
-            ref={flatListRef}
-            data={images}
-            keyExtractor={(item, index) => index.toString()}
-            horizontal
-            pagingEnabled
-            showsHorizontalScrollIndicator={false}
-            onScroll={Animated.event(
-              [{ nativeEvent: { contentOffset: { x: fadeAnim } } }],
-              {
-                useNativeDriver: false,
-                listener: handleScroll,
-                
-              }
-            )}
-            renderItem={({ item }) => (
-              <Animated.Image
-                animation="fadeIn"
-                source={item}
-                style={{
-                  resizeMode: "cover",
-                  marginTop: 10,
-                  width: wp(85),
-                  height: hp(40),
-                  marginBottom: -200,
-                  overflow: "hidden",
-                  
-                  
-                  borderRadius: 30,
-                  
-                  margin:10
-                 
-                }}
-              />
-            )}
-          />
+        
+<FlatList
+  style={{
+    width: wp(88),
+    margin: 20,
+    borderRadius: 40,
+  }}
+  ref={flatListRef}
+  data={data}
+  keyExtractor={(item) => item.key}
+  horizontal
+  pagingEnabled
+  showsHorizontalScrollIndicator={false}
+  onScroll={Animated.event(
+    [{ nativeEvent: { contentOffset: { x: fadeAnim } } }],
+    {
+      useNativeDriver: false,
+      listener: handleScroll,
+    }
+  )}
+  renderItem={({ item: image,index }) => (
+    <Animated.Image
+      animation="fadeIn"
+      source={{ uri: item.image[index] }}
+      style={{
+        resizeMode: "cover",
+        marginTop: 10,
+        width: wp(85),
+        height: hp(40),
+        marginBottom: -200,
+        overflow: "hidden",
+        borderRadius: 30,
+        margin: 10,
+      }}
+    />
+  )}
+/>
+
 
           <StatusBar style="light" />
 
@@ -192,7 +194,7 @@ export default function DestinationScreen(props) {
                   color: theme.textDark,
                 }}
               >
-                {item?.title}
+                {item?.name}
               </AnimatedText>
             </View>
           </Animatable.View>
@@ -240,7 +242,7 @@ export default function DestinationScreen(props) {
         letterSpacing:0.5
       }}
     >
-      {item?.longDescription}
+      {item?.description}
     </AnimatedText>
   </LinearGradient>
 </Animatable.View>
@@ -298,8 +300,9 @@ export default function DestinationScreen(props) {
         textAlign: 'justify',
         lineHeight: hp(2.5),
         letterSpacing:0.5}}>
-      {item?.location?.city}, {item?.location?.state},{" "}
-      {item?.location?.country}
+      {item?.city}, {item?.state},{" "}
+      {item?.country},{"\n"}({item?.latitude},{" "}
+      {item?.longitude})
     </Text>
   </View>
 </Animatable.View>
@@ -452,7 +455,7 @@ export default function DestinationScreen(props) {
 
 
             {/* Reviews Section */}
-            <Animatable.View
+            {/* <Animatable.View
   animation="fadeInUpBig"
   delay={1000}
   style={{
@@ -494,7 +497,7 @@ export default function DestinationScreen(props) {
   {item?.reviews?.map((review, index) => (
     <View key={index} style={{ marginBottom: hp(2), flexDirection: "row" }}>
       {/* Display Author's Profile Picture */}
-      <Image
+      {/* <Image
         source={logoImage}
         style={{
           width: wp(21),
@@ -518,14 +521,14 @@ export default function DestinationScreen(props) {
           {review.comment}
         </Text>
         {/* Display Ratings (Assuming rating is a number out of 5) */}
-        <View style={{ flexDirection: "row", alignItems: "center", marginTop: hp(1) }}>
+        {/* <View style={{ flexDirection: "row", alignItems: "center", marginTop: hp(1) }}>
           <FontAwesome name="star" size={wp(4)} color="#FFD700" style={{ marginRight: wp(1) }} />
           <Text style={{ fontSize: wp(4), color: theme.textLight }}>{review.rating}/5</Text>
         </View>
       </View>
     </View>
   ))}
-</Animatable.View>
+</Animatable.View> */} 
 
 
             <Animatable.View
