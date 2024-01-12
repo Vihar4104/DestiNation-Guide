@@ -1,5 +1,5 @@
-import React, { useEffect, useState } from 'react';
-import { Text, View } from 'react-native';
+import React, { useEffect, useState } from "react";
+import { Text, View } from "react-native";
 
 const TypingEffect = ({ text, onFinishTyping }) => {
   const [displayText, setDisplayText] = useState([]);
@@ -19,23 +19,23 @@ const TypingEffect = ({ text, onFinishTyping }) => {
         clearInterval(typingInterval);
         onFinishTyping();
       }
-    }, 170); // Adjust the typing speed as needed
+    }, 61); // Adjust the typing speed as needed
 
     return () => clearInterval(typingInterval);
   }, [text, onFinishTyping]);
 
   const getLetterColor = (index, text) => {
     // Assign colors based on the words in the text
-    const destiColor = '#000' //'#FF9933'; // Saffron
-    const nationColor = '#000' //'#FFFFFF'; // White
-    const guideColor = '#000' //'#138808'; // Green
+    const destiColor = "#000"; //'#FF9933'; // Saffron
+    const nationColor = "#000"; //'#FFFFFF'; // White
+    const guideColor = "#000"; //'#138808'; // Green
 
     // Check the current word and assign color accordingly
-    if (text.includes('Desti') && index < 5) {
+    if (text.includes("Desti") && index < 5) {
       return destiColor;
-    } else if (text.includes('Nation') && index >= 5 && index < 12) {
+    } else if (text.includes("Nation") && index >= 5 && index < 12) {
       return nationColor;
-    } else if (text.includes('Guide') && index >= 12) {
+    } else if (text.includes("Guide") && index >= 12) {
       return guideColor;
     }
 
@@ -44,9 +44,12 @@ const TypingEffect = ({ text, onFinishTyping }) => {
   };
 
   return (
-    <View style={{ flexDirection: 'row' }}>
+    <View style={{ flexDirection: "row" }}>
       {displayText.map((item, index) => (
-        <Text key={index} style={{ color: item.color, fontSize: 35, marginTop: -200, marginStart: 2 }}>
+        <Text
+          key={index}
+          style={{ color: item.color, fontSize: 45, marginTop: -60 }}
+        >
           {item.letter}
         </Text>
       ))}
