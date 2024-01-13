@@ -67,6 +67,15 @@ export default function DestinationScreen(props) {
     setCurrentIndex(newIndex);
   };
   
+  const handleDirectionPress = () => {
+    // Navigate to the MapScreen when the "Direction" button is pressed
+    navigation.navigate('MapScreen', {
+      destinationName: item.name,
+      destinationLatitude: item.latitude,
+      destinationLongitude: item.longitude,
+    });
+  };
+
   useEffect(() => {
     const interval = setInterval(() => {
       const nextIndex = (currentIndex + 1) % data.length;
@@ -531,21 +540,20 @@ export default function DestinationScreen(props) {
 </Animatable.View> */} 
 
 
-            <Animatable.View
-              animation="fadeInUpBig"
-              delay={1200}
-              style={{ marginTop: hp(0.1) }}
-            >
-              <TouchableOpacity
-              className="py-3 mb-[100px] bg-gray-400 rounded-xl"
-              >
-                <Text
-                  className='text-xl font-bold text-center text-black'
-                >
-                  Direction
-                </Text>
-              </TouchableOpacity>
-            </Animatable.View>
+<Animatable.View
+        animation="fadeInUpBig"
+        delay={1200}
+        style={{ marginTop: hp(0.1) }}
+      >
+        <TouchableOpacity
+          className="py-3 mb-[100px] bg-gray-400 rounded-xl"
+          onPress={handleDirectionPress}
+        >
+          <Text className='text-xl font-bold text-center text-black'>
+            Direction
+          </Text>
+        </TouchableOpacity>
+      </Animatable.View>
           </ScrollView>
         </View>
       </View>

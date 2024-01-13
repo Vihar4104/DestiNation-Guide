@@ -9,6 +9,7 @@ import ProfileScreen from "../screens/ProfileScreen";
 import LoginScreen from "../screens/LoginScreen";
 import SignUpScreen from "../screens/SignupScreen";
 import useAuth from "../../hooks/useAuth";
+import MapScreen from "../screens/MapScreen";
 
 const Stack = createNativeStackNavigator();
 
@@ -44,6 +45,9 @@ export default function AppNavigation() {
             options={{ headerShown: false }}
             component={DestinationScreen}
           />
+          <Stack.Screen name="MapScreen" 
+          options={{ headerShown: false }}
+          component={MapScreen} />
         </Stack.Navigator>
       </NavigationContainer>
     );
