@@ -246,10 +246,12 @@ function AllReviewRating() {
       }, [place]);
     return (
         <div>
-            <div>
+            <div className="fixed z-10">
                 <HomeHeader />
             </div>
-
+<div style={{
+  paddingTop:'200px'
+}}>
             {place ? (
                 <div className="flex">
                    <div className="flex flex-col items-center w-4/12 p-4 ">
@@ -368,7 +370,7 @@ function AllReviewRating() {
             ) : (
                 <p>Loading...</p>
             )}
-
+</div>
         </div>
     )
 }

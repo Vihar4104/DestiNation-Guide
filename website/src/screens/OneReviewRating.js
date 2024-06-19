@@ -272,10 +272,12 @@ export default function OneReviewRating() {
 
   return (
     <div>
-      <div>
+      <div className="fixed z-10">
         <HomeHeader />
       </div>
-
+<div style={{
+  paddingTop:'200px'
+}}>
       {place ? (
         <div className="flex">
           <div className="flex flex-col items-center w-4/12 p-4 ">
@@ -415,6 +417,7 @@ export default function OneReviewRating() {
       ) : (
         <p>Loading...</p>
       )}
+  </div>
     </div>
   );
 }

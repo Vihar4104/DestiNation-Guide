@@ -202,9 +202,12 @@ const PlaceDetails = () => {
   return (
     <>
       <div>
-        <div>
+        <div className="fixed z-10">
           <HomeHeader />
         </div>
+        <div style={{
+          paddingTop:'200px'
+        }}>
         {place ? (
           <div className="flex">
             <div className="flex flex-col items-center justify-center w-8/12 p-4">
@@ -321,13 +324,14 @@ const PlaceDetails = () => {
                     fontWeight: "bolder",
                     color: "black",
                     width: "400px",
+                    zIndex:'-100'
                   }}
                 >
                   Map
                   <MapContainer
                     center={[place.latitude, place.longitude]}
                     zoom={16}
-                    style={{ height: "450px" }}
+                    style={{ height: "450px",zIndex:1}}
                   >
                     <TileLayer url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png" />
                     <Marker
@@ -374,6 +378,7 @@ const PlaceDetails = () => {
         ) : (
           <p>Loading...</p>
         )}
+        </div>
       </div>
     </>
   );

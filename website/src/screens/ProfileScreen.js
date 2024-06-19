@@ -13,6 +13,9 @@ import Headers from '../components/Headers';
 import { FaUserEdit, FaRegComment, FaBookmark, FaLock, FaSignOutAlt } from 'react-icons/fa';
 import './profile.css'
 
+
+
+import { useHistory } from 'react-router-dom';
 export default function ProfileScreen() {
   const navigate = useNavigate();
   const [userData, setUserData] = useState(null);
@@ -236,13 +239,19 @@ export default function ProfileScreen() {
   const handleUserReviewRating = () => {
     navigate("/userreviewrating")
   }
+ 
+
+  
+
 
   return (
     <div>
-      <div>
+      <div className='fixed z-10'>
         <Headers />
       </div>
-      <div className="flex">
+      <div className="flex" style={{
+        paddingTop:'200px'
+      }}>
       <div className="flex flex-col items-center justify-center w-4/12 p-4 border-r border-gray-500">
         <div className="mb-6">
           <button
@@ -286,7 +295,7 @@ export default function ProfileScreen() {
 
         <div className="mb-6">
           <button
-            onClick={() => { /* Add logout functionality */ }}
+            onClick={handleLogout}
             className="profile-button"
           >
             <FaSignOutAlt className="icon" />

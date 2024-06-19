@@ -156,8 +156,8 @@ local_ip_address = get_local_ip()
 
 # Set CORS_ALLOWED_ORIGINS
 CORS_ALLOWED_ORIGINS = [
-    f"exp://{local_ip_address}:8081",
-    f"http://192.168.1.5:19006",
+    f"exp://192.168.1.4:8081",
+    f"http://192.168.1.4:8081",
     f"http://192.168.1.7:19000",
     f"http://127.0.0.1:8000",
     f"http://192.168.1.5:8000"

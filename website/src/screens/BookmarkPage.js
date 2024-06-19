@@ -262,7 +262,7 @@ export default function BookmarkPage() {
 
         <div className="mb-6">
           <button
-            onClick={() => { /* Add logout functionality */ }}
+            onClick={handleLogout}
             className="profile-button"
           >
             <FaSignOutAlt className="icon" />

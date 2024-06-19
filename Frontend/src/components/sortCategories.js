@@ -174,6 +174,7 @@ const Destinations = ({ selectedSortCategory }) => {
           const response = await fetchData('api/destinations/');
           if (response && response.destinations) {
             data = response.destinations;
+            
             setDestinationData(data);
           } else {
             throw new Error('Invalid response format for destinations');

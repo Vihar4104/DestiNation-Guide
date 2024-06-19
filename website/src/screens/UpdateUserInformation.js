@@ -267,10 +267,12 @@ export default function UpdateUserInformation() {
   return (
     <>
       <div>
-        <div>
+        <div className="fixed z-10">
           <Headers />
         </div>
-        <div className="flex">
+        <div className="flex" style={{
+          paddingTop:'200px'
+        }}>
         <div className="flex flex-col items-center justify-center w-4/12 p-4 border-r border-gray-500">
         <div className="mb-6">
           <button
@@ -314,7 +316,7 @@ export default function UpdateUserInformation() {
 
         <div className="mb-6">
           <button
-            onClick={() => { /* Add logout functionality */ }}
+            onClick={handleLogout}
             className="profile-button"
           >
             <FaSignOutAlt className="icon" />

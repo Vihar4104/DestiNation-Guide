@@ -2,96 +2,51 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { signInWithEmailAndPassword, getAuth } from "firebase/auth";
 import { getFirestore, doc, getDoc } from "firebase/firestore";
-import { toast } from 'react-toastify';
-import 'react-toastify/dist/ReactToastify.css';
 import InputControlPage from "./InputControlPage";
 import { auth, firestore } from "../config/firebase";
 import logo from '../assets/images/logo.png';
-import background from "../assets/images/background.jpg";
 import logo1 from '../assets/images/hiking.png';
 import './LoginPage.css'; // Import the CSS file for styling
+import { Icon } from 'react-icons-kit';
+import { eyeOff } from 'react-icons-kit/feather/eyeOff';
+import { eye } from 'react-icons-kit/feather/eye';
+import { toast } from 'react-toastify';
+import 'react-toastify/dist/ReactToastify.css';
 
 function LoginPage() {
   const navigate = useNavigate();
-  const [values, setValues] = useState({
-    email: "",
-    pass: "",
-  });
+  const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [showPassword, setShowPassword] = useState(false);
-  const [userRole, setUserRole] = useState(null);
-  const [userData, setUserData] = useState(null);
   const [errorMsg, setErrorMsg] = useState("");
-  const [submitButtonDisabled, setSubmitButtonDisabled] = useState(false);
 
-  const togglePasswordVisibility = () => {
-    setShowPassword((prevShowPassword) => !prevShowPassword);
+  const handleEmailChange = (event) => {
+    setEmail(event.target.value);
   };
 
-  const handleSubmission = () => {
-    if (!values.email || !values.pass) {
-      setErrorMsg("All fields are mandatory");
-      return;
-    }
-    setErrorMsg("");
-
-    signInWithEmailAndPassword(auth, values.email, values.pass);
-    fetchUserRole();
+  const handlePasswordChange = (event) => {
+    setPassword(event.target.value);
   };
 
-  const fetchUserRole = async () => {
-    const user = getAuth().currentUser;
+  const handleTogglePasswordVisibility = () => {
+    setShowPassword(prevShowPassword => !prevShowPassword);
+  };
 
-    if (user) {
-      const uid = user.uid;
-      const userRoleRef = doc(firestore, "userRoles", uid);
-      try {
-        const docSnapshot = await getDoc(userRoleRef);
-
-        if (docSnapshot.exists()) {
-          const role = docSnapshot.data().role;
-          setUserRole(role);
-          const data = docSnapshot.data().name;
-          setUserData(data);
-
-          if (role === "Admin" || role === "user") {
-            toast.success(`Logging in as ${data}`, {
-              position: 'bottom-right',
-              autoClose: 3000,
-              hideProgressBar: false,
-              closeOnClick: true,
-              pauseOnHover: true,
-              draggable: true,
-              progress: undefined,
-            });
-            console.log("logging in");
-            navigate("/");
-          }
-        } else {
-          toast.success(`User doesn't exist! Please signup.`, {
-            position: 'bottom-right',
-            autoClose: 3000,
-            hideProgressBar: false,
-            closeOnClick: true,
-            pauseOnHover: true,
-            draggable: true,
-            progress: undefined,
-          });
-          console.log("User doesn't exist. Please SignUp!");
-          setUserRole(null);
-        }
-      } catch (error) {
-        toast.success(`Error fetching user role: ${error}`, {
-          position: 'bottom-right',
-          autoClose: 3000,
-          hideProgressBar: false,
-          closeOnClick: true,
-          pauseOnHover: true,
-          draggable: true,
-          progress: undefined,
-        });
-        console.error("Error fetching user role:", error);
+  const handleSignIn = async () => {
+    try {
+      if (!email || !password) {
+        setErrorMsg("All fields are mandatory");
+        return;
       }
+
+      const auth = getAuth();
+      await signInWithEmailAndPassword(auth, email, password);
+
+      // If sign-in successful, navigate to the home page or any other desired route
+      navigate("/");
+    } catch (error) {
+      setErrorMsg("Failed to sign in. Please check your credentials.");
+      console.error("Error signing in:", error);
     }
   };
 
@@ -107,32 +62,33 @@ function LoginPage() {
 
             <InputControlPage
               label="Email"
-              onChange={(event) =>
-                setValues((prev) => ({ ...prev, email: event.target.value }))
-              }
+              onChange={handleEmailChange}
               placeholder="Enter email address"
               className="input-field"
             />
 
             <InputControlPage
               label="Password"
-              onChange={(event) =>
-                setValues((prev) => ({ ...prev, pass: event.target.value }))
-              }
               placeholder="Enter Password"
               type={showPassword ? "text" : "password"}
+              onChange={handlePasswordChange}
               className="input-field"
             />
+            <button
+              onClick={handleTogglePasswordVisibility}
+              className="absolute right-10 t bottom-0 mt-auto mb-auto mr-3"
+              style={{
+                top:'100px'
+              }}
+            >
+              <Icon icon={showPassword ? eye : eyeOff} size={15} />
+            </button>
 
             <div className="error-message">
               <b className="text-red-500 block mb-2">{errorMsg}</b>
             </div>
 
-            <button
-              disabled={submitButtonDisabled}
-              onClick={handleSubmission}
-              className="login-button"
-            >
+            <button onClick={handleSignIn} className="login-button">
               Login
             </button>
 
